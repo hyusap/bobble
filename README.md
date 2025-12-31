@@ -7,7 +7,10 @@ A macOS command-line utility that detects head gestures (nods and shakes) using 
 - Detects **nods** (yes) and **head shakes** (no) using CMHeadphoneMotionManager
 - Returns boolean results via exit codes for easy scripting
 - Configurable timeout, sensitivity, and gesture modes
+- **Instant device availability check** with `--check` flag
 - Verbose mode for debugging
+- **Auto-generated shell completions** (bash, zsh, fish)
+- Built with Apple's Swift Argument Parser for robust CLI experience
 - Works with AirPods Pro, AirPods Max, and Beats Fit Pro
 
 ## Requirements
@@ -28,6 +31,21 @@ This creates a release build at `.build/release/headgesture`
 
 ```bash
 sudo cp .build/release/headgesture /usr/local/bin/
+```
+
+### Shell Completions (Optional)
+
+Generate completions for your shell:
+
+```bash
+# Bash
+headgesture --generate-completion-script bash > /usr/local/etc/bash_completion.d/headgesture
+
+# Zsh
+headgesture --generate-completion-script zsh > /usr/local/share/zsh/site-functions/_headgesture
+
+# Fish
+headgesture --generate-completion-script fish > ~/.config/fish/completions/headgesture.fish
 ```
 
 ## Usage
