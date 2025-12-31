@@ -19,7 +19,20 @@ A macOS command-line utility that detects head gestures (nods and shakes) using 
 - AirPods Pro, AirPods Max, or Beats Fit Pro
 - Swift 5.9+ (for building from source)
 
-## Building
+## Installation
+
+### Via Homebrew (Recommended)
+
+```bash
+brew install hyusap/tap/bobble
+```
+
+Homebrew will automatically:
+- Build from source
+- Install to `/opt/homebrew/bin/bobble` (Apple Silicon) or `/usr/local/bin/bobble` (Intel)
+- Set up shell completions
+
+### Building from Source
 
 ```bash
 ./build.sh
