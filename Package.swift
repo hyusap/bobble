@@ -2,14 +2,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "HeadGesture",
+    name: "Bobble",
     platforms: [
         .macOS(.v14)
     ],
     products: [
         .executable(
-            name: "headgesture",
-            targets: ["HeadGesture"]
+            name: "bobble",
+            targets: ["Bobble"]
         )
     ],
     dependencies: [
@@ -17,11 +17,11 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "HeadGesture",
+            name: "Bobble",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
             ],
-            path: "Sources/HeadGesture"
+            path: "Sources/Bobble"
         )
     ]
 )

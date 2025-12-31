@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Example script demonstrating HeadGesture CLI usage
+# Example script demonstrating Bobble CLI usage
 
-HEADGESTURE=".build/release/headgesture"
+BOBBLE=".build/release/bobble"
 
-echo "=== HeadGesture Example Script ==="
+echo "=== Bobble Example Script ==="
 echo ""
 
 # Example 1: Simple yes/no question
 echo "Example 1: Do you want to proceed?"
 echo "           (Nod for yes, shake for no - 10s timeout)"
-$HEADGESTURE --timeout 10
+$BOBBLE --timeout 10
 
 case $? in
   0)

@@ -2,13 +2,13 @@
 
 set -e
 
-echo "Building HeadGesture CLI tool..."
+echo "Building Bobble CLI tool..."
 
 # Build in release mode for better performance
 swift build -c release
 
 # Copy executable to convenient location
-BINARY_PATH=".build/release/headgesture"
+BINARY_PATH=".build/release/bobble"
 
 if [ -f "$BINARY_PATH" ]; then
     echo "✓ Build successful!"

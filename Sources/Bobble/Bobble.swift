@@ -6,12 +6,12 @@ import ArgumentParser
 
 @available(macOS 14.0, *)
 @main
-struct HeadGesture: ParsableCommand {
+struct Bobble: ParsableCommand {
     static let configuration = CommandConfiguration(
-        commandName: "headgesture",
+        commandName: "bobble",
         abstract: "Detect head nods (yes) and shakes (no) using AirPods motion",
         discussion: """
-            HeadGesture uses CoreMotion to detect head gestures through AirPods Pro, AirPods Max, 
+            Bobble uses CoreMotion to detect head gestures through AirPods Pro, AirPods Max, 
             or Beats Fit Pro. Perfect for hands-free yes/no interactions.
             
             EXIT CODES:

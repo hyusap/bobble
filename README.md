@@ -1,4 +1,4 @@
-# HeadGesture
+# Bobble
 
 A macOS command-line utility that detects head gestures (nods and shakes) using AirPods motion tracking. Perfect for hands-free yes/no interactions in scripts and automation workflows.
 
@@ -25,12 +25,12 @@ A macOS command-line utility that detects head gestures (nods and shakes) using 
 ./build.sh
 ```
 
-This creates a release build at `.build/release/headgesture`
+This creates a release build at `.build/release/bobble`
 
 ### Install Globally (Optional)
 
 ```bash
-sudo cp .build/release/headgesture /usr/local/bin/
+sudo cp .build/release/bobble /usr/local/bin/
 ```
 
 ### Shell Completions (Optional)
@@ -39,13 +39,13 @@ Generate completions for your shell:
 
 ```bash
 # Bash
-headgesture --generate-completion-script bash > /usr/local/etc/bash_completion.d/headgesture
+bobble --generate-completion-script bash > /usr/local/etc/bash_completion.d/bobble
 
 # Zsh
-headgesture --generate-completion-script zsh > /usr/local/share/zsh/site-functions/_headgesture
+bobble --generate-completion-script zsh > /usr/local/share/zsh/site-functions/_bobble
 
 # Fish
-headgesture --generate-completion-script fish > ~/.config/fish/completions/headgesture.fish
+bobble --generate-completion-script fish > ~/.config/fish/completions/bobble.fish
 ```
 
 ## Usage
@@ -54,7 +54,7 @@ headgesture --generate-completion-script fish > ~/.config/fish/completions/headg
 
 ```bash
 # Wait for either nod or shake (30s default timeout)
-headgesture
+bobble
 
 # Check the exit code
 echo $?  # 0 = nod, 1 = shake, 2 = timeout, 3 = error
@@ -87,7 +87,7 @@ echo $?  # 0 = nod, 1 = shake, 2 = timeout, 3 = error
 #!/bin/bash
 
 # Quick check if AirPods with motion support are available
-if headgesture --check; then
+if bobble --check; then
     echo "AirPods ready for gesture detection"
 else
     echo "No compatible AirPods detected"
@@ -101,7 +101,7 @@ fi
 #!/bin/bash
 
 echo "Do you want to continue? (Nod for yes, shake for no)"
-headgesture --timeout 15
+bobble --timeout 15
 
 if [ $? -eq 0 ]; then
     echo "User said YES - continuing..."
@@ -116,7 +116,7 @@ fi
 
 ```bash
 # Wait for a nod gesture only
-headgesture --gesture nod --timeout 10
+bobble --gesture nod --timeout 10
 
 if [ $? -eq 0 ]; then
     echo "Nod confirmed!"
@@ -127,7 +127,7 @@ fi
 
 ```bash
 # More sensitive detection with debug logging
-headgesture --sensitivity 0.3 --verbose
+bobble --sensitivity 0.3 --verbose
 ```
 
 ### In a Loop (Confirmation Retries)
@@ -140,7 +140,7 @@ max_attempts=3
 
 while [ $attempt -le $max_attempts ]; do
     echo "Attempt $attempt/$max_attempts: Nod to confirm"
-    headgesture --gesture nod --timeout 10
+    bobble --gesture nod --timeout 10
     
     if [ $? -eq 0 ]; then
         echo "Confirmed!"
@@ -162,7 +162,7 @@ import subprocess
 import sys
 
 print("Nod for yes, shake for no")
-result = subprocess.run(['headgesture', '--timeout', '20'])
+result = subprocess.run(['bobble', '--timeout', '20'])
 
 if result.returncode == 0:
     print("User said YES")
@@ -182,9 +182,9 @@ const { spawn } = require('child_process');
 
 console.log('Waiting for gesture...');
 
-const headgesture = spawn('headgesture', ['--timeout', '15']);
+const bobble = spawn('bobble', ['--timeout', '15']);
 
-headgesture.on('close', (code) => {
+bobble.on('close', (code) => {
     if (code === 0) {
         console.log('User nodded (YES)');
     } else if (code === 1) {

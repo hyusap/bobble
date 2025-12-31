@@ -3,21 +3,21 @@
 # PermissionRequest hook that:
 # 1. Pauses system-wide media playback
 # 2. Uses macOS "say" to ask for permission
-# 3. Uses headgesture to get yes/no response
+# 3. Uses bobble to get yes/no response
 # 4. Resumes media playback
 
 set -e
 
 echo "[DEBUG] Hook started" >&2
 
-# Path to headgesture executable
-HEADGESTURE="$(dirname "$0")/../.build/release/headgesture"
+# Path to bobble executable
+BOBBLE="$(dirname "$0")/../.build/release/bobble"
 
-echo "[DEBUG] Headgesture path: $HEADGESTURE" >&2
+echo "[DEBUG] Bobble path: $BOBBLE" >&2
 
-# Check if headgesture is built
-if [ ! -f "$HEADGESTURE" ]; then
-    echo "Error: headgesture not found at $HEADGESTURE" >&2
+# Check if bobble is built
+if [ ! -f "$BOBBLE" ]; then
+    echo "Error: bobble not found at $BOBBLE" >&2
     echo "Please build it first with: cd $(dirname "$0")/.. && ./build.sh" >&2
     exit 1
 fi
@@ -37,7 +37,7 @@ echo "[DEBUG] Tool input: $TOOL_INPUT" >&2
 # Check if headphone motion is available before proceeding
 # If not available, immediately fall back to normal permission flow
 echo "[DEBUG] Checking for headphone motion availability..." >&2
-if ! "$HEADGESTURE" --check 2>/dev/null; then
+if ! "$BOBBLE" --check 2>/dev/null; then
     echo "[DEBUG] Headphone motion not available, deferring to normal permission flow" >&2
     exit 1
 fi
@@ -83,8 +83,8 @@ echo "[DEBUG] Finished speaking, waiting for gesture..." >&2
 # Small pause before listening for gesture
 sleep 0.5
 
-# Use headgesture to get response
-"$HEADGESTURE" --timeout 15 --sensitivity 0.5
+# Use bobble to get response
+"$BOBBLE" --timeout 15 --sensitivity 0.5
 GESTURE_EXIT=$?
 
 echo "[DEBUG] Gesture exit code: $GESTURE_EXIT" >&2
