@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/hooks/permission-with-gesture.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

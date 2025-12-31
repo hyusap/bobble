@@ -1,0 +1,13 @@
+# Swift build artifacts
+.build/
+*.xcodeproj
+*.swiftpm
+
+# macOS
+.DS_Store
+
+# IDE
+*.swp
+*~
+.vscode/
+.idea/
